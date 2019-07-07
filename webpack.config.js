@@ -20,7 +20,7 @@ module.exports = {
         }
       ]
     },
-        // ...
+  // ...
     resolve: {
       alias: {
         'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
@@ -41,5 +41,13 @@ if(process.env.NODE_ENV==='production'){
     )
   )
 }
+
+module.exports.plugins.push(
+  new webpack.DefinePlugin({
+    'process.env':{
+      NODE_ENV: 'production'
+    }
+  })
+)
 
 
