@@ -3,7 +3,10 @@ let path = require('path');
 
 module.exports = {
     mode:'development', 
-    entry:'F:/Projects/js/vue/vue-appEp19/resources/js/app.js',    
+    entry:{
+      app:'F:/Projects/js/vue/vue-appEp19/resources/js/app.js',
+      vendor: ['vue', 'axios']
+    },    
     output:{
         path:path.resolve(__dirname,'public/js'),
         filename: 'app.js',
@@ -26,7 +29,11 @@ module.exports = {
         'vue$': 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
       }
     },
-    plugins:[]
+    plugins:[
+      new webpack.optimize.CommonsChunkPlugin({
+        name: ['vendor']
+      })
+    ]
       
 };   
 
